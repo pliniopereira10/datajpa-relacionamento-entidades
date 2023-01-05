@@ -13,8 +13,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "tb_author")
@@ -33,6 +35,7 @@ public class Author implements Serializable {
 	private Zipcode zipcode;
 
 	@ManyToMany(mappedBy = "authors")
+	@Setter(value = AccessLevel.NONE)
 	private Set<Book> books = new HashSet<>();
 
 	public Author(Long id, String name, Zipcode zipcode) {
